@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 import './index.css'
 import Login from "./pages/login";
-import Home from "./pages/home";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

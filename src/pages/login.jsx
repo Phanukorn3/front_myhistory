@@ -1,3 +1,10 @@
+// ตัวอย่างคลาส Tailwind CSS สำหรับ responsive ขนาดมาตรฐานและ mobile
+// นำไปใช้กับ element ในหน้า login ได้เลย เช่น
+// <div className="w-full sm:max-w-md mx-auto p-4 sm:p-8 rounded-lg">
+// <img className="w-24 h-24 sm:w-40 sm:h-40 mx-auto" ... />
+// <h1 className="text-xl sm:text-2xl font-bold mb-6 text-center">...</h1>
+// <input className="w-full h-10 sm:h-12 px-3 rounded bg-[#747474] ..." ... />
+// <button className="w-full h-10 sm:h-12 rounded-2xl ...">...</button>
 // สมมุติ login ง่าย ๆ
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -23,22 +30,20 @@ export default function Login({ setIsLoggedIn }) {
   // ------------------------------------------
   // render
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#161616] text-white">
-      <div className="w-full max-w-sm bg-[#1a1a1a] rounded p-10 pt-0 shadow-lg">
-        <img src="src/assets/myhis-img.png" alt="logo" className="mx-auto w-80 h-80 bg-transparent"/>
-        <h1 className="text-3xl font-bold text-center mb-10 mt-0">Sing In</h1>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-           <div className="flex flex-col">
-            {/* ค่อยทำ onclick ที่หลัง */}
-            <label htmlFor="username" className="mb-1.5 text-gray-300 text-m">ชื่อผู้ใช้</label> 
-          <input className="block w-full h-10 px-3 rounded bg-[#747474]" placeholder="กรอกชื่อผู้ใช้" value={username} onChange={e => setUsername(e.target.value)} />
+    <div className="min-h-screen flex items-center justify-center bg-[#161616] text-white px-4 sm:px-0">
+      <div className="w-full max-w-xs sm:max-w-md md:max-w-lg bg-[#1a1a1a] rounded p-4 sm:p-10 pt-0 shadow-lg">
+        <img src="src/assets/myhis-img.png" alt="logo" className="mx-auto w-28 h-28 sm:w-40 sm:h-40 md:w-80 md:h-80 bg-transparent"/>
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6 sm:mb-8 md:mb-10 mt-0">Sign In</h1>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:gap-5 md:gap-6">
+          <div className="flex flex-col">
+            <label htmlFor="username" className="mb-1 text-gray-300 text-sm sm:text-base">ชื่อผู้ใช้</label>
+            <input className="block w-full h-10 sm:h-12 px-3 rounded bg-[#747474] focus:outline-none focus:ring-2 focus:ring-[#00ff6a] text-sm sm:text-base" placeholder="กรอกชื่อผู้ใช้" value={username} onChange={e => setUsername(e.target.value)} />
           </div>
           <div className="flex flex-col">
-            {/* ค่อยทำ onclick ที่หลัง */}
-            <label htmlFor="password" className="mb-1.5 text-gray-300 text-m">รหัสผ่าน</label>
-          <input className="block w-full h-10 px-3 rounded bg-[#747474]" placeholder="กรอกรหัสผ่าน" type="password" value={password} onChange={e => setPassword(e.target.value)} />
+            <label htmlFor="password" className="mb-1 text-gray-300 text-sm sm:text-base">รหัสผ่าน</label>
+            <input className="block w-full h-10 sm:h-12 px-3 rounded bg-[#747474] focus:outline-none focus:ring-2 focus:ring-[#00ff6a] text-sm sm:text-base" placeholder="กรอกรหัสผ่าน" type="password" value={password} onChange={e => setPassword(e.target.value)} />
           </div>
-          <button type="submit" className="block w-30 h-10 px-2 mt-5 text-sm rounded-2xl text-white mx-auto bg-[#575757] hover:bg-[#00ff6a] transition-colors duration-300">เข้าสู่ระบบ</button>
+          <button type="submit" className="block w-30 h-10 sm:h-12 px-2 mt-4 sm:mt-5 text-sm sm:text-base rounded-2xl text-white mx-auto bg-[#575757] hover:bg-[#00ff6a] transition-colors duration-300">เข้าสู่ระบบ</button>
         </form>
       </div>
     </div>
