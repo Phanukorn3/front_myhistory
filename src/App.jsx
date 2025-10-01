@@ -1,24 +1,23 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
-import './index.css'
-import Login from "./pages/login";
-import Create_account from "./pages/create_account";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-function App() {
+import Home from "./pages/Home.jsx";
+import Login from "./pages/Login.jsx";
+import CreateAccount from "./pages/create_account.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
+
+export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="/create_account" element={<Create_account setIsLoggedIn={setIsLoggedIn} />} />
-        <Route
-          path="/"
-          element={isLoggedIn ? <Login /> : <Navigate to="/login" />}
-        />
-      </Routes>
-    </BrowserRouter>
-  );
-}
+  const router = createBrowserRouter([
+    
+    { path: "/login", element: <Login setIsLoggedIn={setIsLoggedIn} /> },
+    { path: "/create_account", element: <CreateAccount setIsLoggedIn={setIsLoggedIn} /> },
 
-export default App;
+    // { path: "/home", element: <PrivateRoute isLoggedIn={isLoggedIn}><Home /></PrivateRoute> },
+
+    { path: "/", element: <PrivateRoute isLoggedIn={isLoggedIn}><Home /></PrivateRoute> },
+  ]);
+
+  return <RouterProvider router={router} />;
+}
